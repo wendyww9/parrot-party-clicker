@@ -58,8 +58,15 @@ const effectBoxOne = () => {
 // Box 2: When the spacebar is pressed down, make the text in Box 2 turn into a flan emoji
 const effectBoxTwo = () => {
   const boxTwo = document.getElementById('box-two');
+  let isHover = false;
+  boxTwo.addEventListener('mouseenter', () => {
+    isHover = true;
+  });
+  boxTwo.addEventListener('mouseout', () => {
+    isHover = false;
+  });
   document.addEventListener('keydown', (e) => {
-    if (e.code === 'Space') {
+    if (e.code === 'Space' && isHover) {
       boxTwo.textContent = '🍮';
     }
   });
@@ -94,7 +101,6 @@ document.addEventListener('DOMContentLoaded', () => {
   clickEffect();
   effectBoxOne();
   effectBoxTwo();
-  document.getElementById('box-two').focus();
   effectBoxThree();
   effectBoxFour();
 });
